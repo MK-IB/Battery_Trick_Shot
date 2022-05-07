@@ -40,31 +40,55 @@ public class ShopDataHolder : MonoBehaviour
     void ActivateSkinUnlockCanvas()
     {
         _skinUnlockCanvas.SetActive(true);
-        _skinUnlockCanvas.GetComponent<SkinUnlockManager>().multiplierIndicator.GetComponent<DOTweenAnimation>().tween.Restart();
     }
 
     void DeactivateSkinUnlockCanvas()
     {
         _skinUnlockCanvas.SetActive(false);
     }
-    public void SetSkin(int index)
+    public void SetUnlockedSkin(string indices)
     {
-        PlayerPrefs.SetInt("skinIndex", index);
+        PlayerPrefs.SetString("skinIndices", indices);
     }
     
-    public int GetSkin()
+    public string GetUnlockedSkin()
     {
-        return PlayerPrefs.GetInt("skinIndex", 0);
+        return PlayerPrefs.GetString("skinIndices", "0");
     }
 
+    public void SetBoughtSkins(int indices)
+    {
+        PlayerPrefs.SetInt("boughtSkins", indices);
+    }
+    public int GetBoughtSkins()
+    {
+        return PlayerPrefs.GetInt("boughtSkins", 9);
+    }
+
+    public void SetSkinLockState(int i)
+    {
+        PlayerPrefs.SetInt("skinLockState", i);
+    }
+    public int GetSkinLockState()
+    {
+        return PlayerPrefs.GetInt("skinLockState", 0);
+    }
     public void SetCoins(int coin)
     {
-        int currentTotalCoins = coin + PlayerPrefs.GetInt("coins", 0);
-        PlayerPrefs.SetInt("coins", currentTotalCoins);
+        PlayerPrefs.SetInt("coins", coin);
     }
 
     public int GetCoins()
     {
         return PlayerPrefs.GetInt("coins", 0);
+    }
+
+    public void SetDemoSkinIndex(int index)
+    {
+        PlayerPrefs.SetInt("demoSkinIndex", index);
+    }
+    public int GetDemoSkinIndex()
+    {
+        return PlayerPrefs.GetInt("demoSkinIndex", 0);
     }
 }

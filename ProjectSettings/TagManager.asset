@@ -28,11 +28,16 @@ TagManager:
   - Border
   - Jumper
   - Bridge
+  - otherrope
+  - pin
+  - drop
+  - Particle
+  - randomButton
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Particle
   - Water
   - UI
   - Post Processing
@@ -64,4 +69,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: particle
+    uniqueID: 1008873567
+    locked: 0
+  - name: UI
+    uniqueID: 2416981133
     locked: 0

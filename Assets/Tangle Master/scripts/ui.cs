@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class ui : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class ui : MonoBehaviour
     public AudioSource sounds;
     public AudioSource plugInSound;
     public static int  addNo;
+    public TextMeshProUGUI coinsText;
+    
     private void Awake()
     {
         if(!Instance)
@@ -19,6 +23,12 @@ public class ui : MonoBehaviour
         }
 
     }
+
+    private void Start()
+    {
+        coinsText.SetText(ShopDataHolder.instance.GetCoins().ToString());
+    }
+
     public void nextlevel()
     {
         if (addNo == 1)
@@ -27,8 +37,17 @@ public class ui : MonoBehaviour
         }
         else
             addNo++;
-        Debug.Log(addNo);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (PlayerPrefs.GetInt("level", 1) >= SceneManager.sceneCountInBuildSettings - 1)
+        {
+            SceneManager.LoadScene(Random.Range(1, SceneManager.sceneCountInBuildSettings - 1));
+            PlayerPrefs.SetInt("level", (PlayerPrefs.GetInt("level", 1) + 1));
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("level", (PlayerPrefs.GetInt("level", 1) + 1));
+        }
+        PlayerPrefs.SetInt("levelnumber", PlayerPrefs.GetInt("levelnumber", 1) + 1);
     }
     public void looplevel()
     {

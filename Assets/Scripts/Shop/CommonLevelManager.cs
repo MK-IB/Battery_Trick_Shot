@@ -9,10 +9,6 @@ public class CommonLevelManager : MonoBehaviour
 {
     public void NextLevel()
     {
-        GameObject skinUnlockObj = GetComponent<ShopDataHolder>()._skinUnlockCanvas.gameObject;
-        skinUnlockObj.SetActive(false);
-        skinUnlockObj.GetComponent<SkinUnlockManager>().SaveSkinFillAmount();
-        
         if (PlayerPrefs.GetInt("level", 1) >= SceneManager.sceneCountInBuildSettings - 1)
         {
             SceneManager.LoadScene(Random.Range(1, SceneManager.sceneCountInBuildSettings - 1));
@@ -25,8 +21,15 @@ public class CommonLevelManager : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("levelnumber", PlayerPrefs.GetInt("levelnumber", 1) + 1);
-        
-        
+        StartCoroutine(DisableSkinUnlockCanvas());
+    }
+
+    IEnumerator DisableSkinUnlockCanvas()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GameObject skinUnlockObj = GetComponent<ShopDataHolder>()._skinUnlockCanvas.gameObject;
+        skinUnlockObj.SetActive(false);
+        skinUnlockObj.GetComponent<SkinUnlockManager>().SaveSkinFillAmount();
     }
 
     public void RetryLevel()
@@ -34,5 +37,10 @@ public class CommonLevelManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
         ISManager.instance.ShowInterstitialAds();
+    }
+
+    public void PausePlayGame(int i)
+    {
+        Time.timeScale = i;
     }
 }

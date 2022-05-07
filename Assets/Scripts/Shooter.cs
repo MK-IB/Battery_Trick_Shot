@@ -25,40 +25,63 @@ public class Shooter : MonoBehaviour
     public Color transparentColor;
 
     [HideInInspector] public bool gameStarted = true;
-    
+
     private void Awake()
     {
         instance = this;
     }
+
     private void Start()
     {
         _phoneSplineFollower = phone.GetComponent<SplineFollower>();
     }
+
+    public bool canShoot;
     private void Update()
     {
         if (!GameManager.instance.gameOver && !movePhone)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (EventSystem.current.IsPointerOverGameObject()) return;
-                else
-                {
+                if (EventSystem.current.currentSelectedGameObject) return;
+                
                     zCoord = Camera.main.WorldToScreenPoint(controllerNode.position).z;
                     offset = controllerNode.position - GetMouseWorldPos();
-                }
             }
+
             if (Input.GetMouseButton(0))
             {
                 if (EventSystem.current.IsPointerOverGameObject()) return;
-                else
-                {
-                    controllerNode.position = new Vector3(GetMouseWorldPos().x + offset.x, controllerNode.position.y ,controllerNode.position.z);
-                }
+                controllerNode.position = new Vector3(GetMouseWorldPos().x + offset.x, controllerNode.position.y,
+                    controllerNode.position.z);
             }
+
             if (Input.GetMouseButtonUp(0))
             {
-                if (EventSystem.current.IsPointerOverGameObject()) return;
-                
+                /*#if UNITY_EDITOR
+                if (EventSystem.current.IsPointerOverGameObject(-1)) return;
+                #endif
+                #if UNITY_ANDROID
+                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
+                #endif*/
+                /*var pointerData = new PointerEventData(EventSystem.current) 
+                    { pointerId = -1, position = Input.mousePosition};
+            
+                var results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointerData, results);
+
+                foreach (var result in results)
+                {
+                    if (result.gameObject.name == "Shop")
+                    {
+                        canShoot = false;
+                    }
+                    else
+                    {
+                        canShoot = true;
+                    }
+                }*/
+                if (EventSystem.current.currentSelectedGameObject) return;
                     hand.transform.parent = null;
                     _phoneSplineFollower.follow = true;
                     _phoneSplineFollower.followSpeed = mobileMoveSpeed;
@@ -67,6 +90,8 @@ public class Shooter : MonoBehaviour
                     splineMesh.SetClipRange(0, 0);
                     AudioManager.instance.PlayClip(AudioManager.instance.slideWoosh1);
                     AudioManager.instance.PlayClip(AudioManager.instance.slideWoosh);
+
+                
             }
         }
 

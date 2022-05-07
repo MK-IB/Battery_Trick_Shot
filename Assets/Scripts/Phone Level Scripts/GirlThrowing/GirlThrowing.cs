@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using Dreamteck.Splines;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GirlThrowing : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class GirlThrowing : MonoBehaviour
 
    private void Update()
    {
-      if (Input.GetMouseButtonDown(0) && !isThrown)
+      if (Input.GetMouseButtonDown(0) && !isThrown && !EventSystem.current.IsPointerOverGameObject())
       {
          if (TapScale.instance.isCorrectTime)
          {

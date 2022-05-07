@@ -1,9 +1,13 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MainCanvasController : MonoBehaviour
 {
@@ -32,6 +36,11 @@ public class MainCanvasController : MonoBehaviour
 		GameEvents.Only.GameEnd -= OnGameEnd;
 	}
 
+	private void Awake()
+	{
+		CommonUIEventsManager.instance.StartLevelStartEvent();
+	}
+
 	private void Start()
 	{
 		var levelNo = PlayerPrefs.GetInt("levelNo", 1);
@@ -54,10 +63,6 @@ public class MainCanvasController : MonoBehaviour
 
 	private void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.N)) NextLevel();
-		
-		if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		
 		if(_hasTapped) return;
 		
 		if (!InputExtensions.GetFingerDown()) return;
@@ -68,19 +73,20 @@ public class MainCanvasController : MonoBehaviour
 			TapToPlay();
 	}
 
-	private void EnableVictoryObjects()
+	IEnumerator EnableVictoryObjects()
 	{
-		if(defeat.activeSelf) return;
-		
-		victory.SetActive(true);
-		constantRetryButton.SetActive(false);
-		
-		nextLevel.SetActive(true);
-
-		AudioManagerGrabAndSmash.instance.Play("Win");
-		if (ISManager.instance)
+		if(!defeat.activeSelf)
 		{
-			ISManager.instance.ShowInterstitialOnLC();
+			victory.SetActive(true);
+			constantRetryButton.SetActive(false);
+
+			nextLevel.SetActive(true);
+			CommonUIEventsManager.instance.StartLevelCompleteEvent();
+
+			AudioManagerGrabAndSmash.instance.Play("Win");
+
+			yield return new WaitForSeconds(3.5f);
+			ISManager.instance.ShowInterstitialAds();
 		}
 	}
 
@@ -184,8 +190,8 @@ public class MainCanvasController : MonoBehaviour
 	{
 		/*if(GAScript.Instance)
 			GAScript.Instance.LevelCompleted(PlayerPrefs.GetInt("levelNo").ToString());*/
-		
-		Invoke(nameof(EnableVictoryObjects), 1f);
+
+		StartCoroutine(EnableVictoryObjects());
 		if (GAScript.Instance)
 		{
 			GAScript.Instance.LevelCompleted(PlayerPrefs.GetInt("levelnumber", 1).ToString());

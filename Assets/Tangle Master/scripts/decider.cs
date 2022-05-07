@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -15,7 +16,12 @@ public class decider : MonoBehaviour
     public GameObject winpanel;
     private GameObject papereffect;
     [HideInInspector] public bool levelComplete;
-    
+
+    private void Awake()
+    {
+        //CommonUIEventsManager.instance.StartLevelStartEvent();
+    }
+
     void Start()
     {
         papereffect = GameObject.Find("papereffect");
@@ -26,7 +32,7 @@ public class decider : MonoBehaviour
         timer = starttime;
         winpanel.SetActive(false);
         selecter = GameObject.Find("Main Camera").GetComponent<selecter>();
-        deviceanimation.enabled = false;
+        GA_FB.instance.LevelStart(PlayerPrefs.GetInt("level", 1).ToString());
     }
     void Update()
     {
@@ -56,11 +62,14 @@ public class decider : MonoBehaviour
         EventsManager.instance.StartTangleSolvedEvent();
         
         yield return new WaitForSeconds(2f);
-        winpanel.SetActive(true);
+        //winpanel.SetActive(true);
+        CommonUIEventsManager.instance.StartLevelCompleteEvent();
         PlayerPrefs.SetInt("level", SceneManager.GetActiveScene().buildIndex + 1);
         Destroy(selecter);
         papereffect.SetActive(true);
-        deviceanimation.enabled = true;
+        //deviceanimation.enabled = true;
+        GA_FB.instance.LevelComplete(PlayerPrefs.GetInt("level", 1).ToString());
+        ISManager.instance.ShowInterstitialAds();
     }
 
     void CameraZoomIn()

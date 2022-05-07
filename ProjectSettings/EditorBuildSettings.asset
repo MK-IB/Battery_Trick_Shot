@@ -17,34 +17,34 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 1.unity
     guid: 92fa9fe8de18bd04a9f39323d1c3aae8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Tangle Master/Levels/level1.unity
     guid: 560e7435c6878bd47ae8517c58771626
-  - enabled: 1
+  - enabled: 0
     path: Assets/Grab and Smash/Scenes/1_Blue Level - 1.unity
     guid: c4b3663ed7b60ff45baac6c3affa1f45
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 1.unity
     guid: 777f4ecd9f8cc56499237dbb43fc02c8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 11 Mario And Kart.unity
     guid: 629a292881203b04ca1b2bbb37104b7f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 10 Wheels Ring 1.unity
     guid: 67e3208d526f06a43b63de09f6139bf7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift Level 1.unity
     guid: 73de3597e60a34b4dba258a5cd45527c
   - enabled: 0
     path: Assets/Tangle Master/Levels/level2.unity
     guid: c8004883caf04e54cb37775dd0bebb34
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 9 Wheel Swing_Tap_Release.unity
     guid: f5aa5d984b7ea5a4cb8d7d2d153f04ef
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 2.unity
     guid: a9b29fe17149b634bb19c0fc33656950
   - enabled: 0
@@ -56,16 +56,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Tangle Master/Levels/level3.unity
     guid: 8d4fa76f7db27e44d84c1023ce79718f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level 2 Dance.unity
     guid: b20e617f0e8492a41a3dc20cbc466090
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 7 Swing Office.unity
     guid: 93992f681c372364c8f65016c2ef3401
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift Level 2.unity
     guid: 82c9cc874ad86264ca36b9a997c00912
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 3.unity
     guid: 5fa8219576862ba41bcf05f2b06a7632
   - enabled: 0
@@ -77,16 +77,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 3.unity
     guid: d16b9b8ed3813cc4f86445a506b19426
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 12 Girl Throwing.unity
     guid: 145ec0afd7c184a4b92a3bc022bfb8a8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 7 Swing Office 1.unity
     guid: 5e502ea2d922b2e4499044a71864cbec
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 4.unity
     guid: 08b46070a1009a743bfe52d30e81b4c0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 7 Swing Kissing.unity
     guid: 08cea2d6de6e7c745ad74008fa3e193e
   - enabled: 0
@@ -98,22 +98,22 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 4.unity
     guid: 76871984138568c498b8a569d656c4f9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 7 Swing Kissing Cheating Boy.unity
     guid: c6a6e7d9a1975a7448f91b45ffb123f2
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift Multiple Shots 1.unity
     guid: 844a904eca6df7a4cad58e8eae8210ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level 7 Swing.unity
     guid: ad817a7d8913eaf4cb900f05260c0830
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 7 Swing Kissing Cheating Girl.unity
     guid: 3ece722b04b3f8f4b9d4c2f6f78b71f4
   - enabled: 0
     path: Assets/Tangle Master/Levels/level6.unity
     guid: 7ad8d3caf2196bd4eac6f059aa62ac60
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 5.unity
     guid: 6fc76fe33dbfe3c4aa1059f2c8f373c3
   - enabled: 0
@@ -122,13 +122,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 5.unity
     guid: d3e9fc1d4b65c134e86f15e587f6a25b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 7 Swing Girls Meet.unity
     guid: b622d578a6bc0ed4895903d18d8889d0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift Multiple Shots 2.unity
     guid: 91625843c9a05fc4fb7a0aad9fe37ef0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 10.unity
     guid: f88a08f57c34ef5458e30b49679cc9b7
   - enabled: 0
@@ -140,13 +140,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 6.unity
     guid: 8f8ededdb470fed419206658a91049fc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level 3 Balls.unity
     guid: 3eef0322146db414fb7ca77344c914a3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 9.unity
     guid: a69513ea6afcc594d9c132ca80221825
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level 3 Balls Curve.unity
     guid: d6ab1e71eb921b54e84ccd86e05e19f3
   - enabled: 0
@@ -158,13 +158,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 7.unity
     guid: b004e4a11e97170489f53e1df70c4ab7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift Multiple Shots 3.unity
     guid: 8efa24757f123e04688307f99d802de8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 7 Swing Girls Playing.unity
     guid: 5d44b0eafb98ef440a8285a9670b9fff
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 8.unity
     guid: 6f709791e4db2724296f44c7e4dd31cb
   - enabled: 0
@@ -176,10 +176,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 8.unity
     guid: accaa4e46b6857f408659a39f5562aa1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 10 Wheels Ring 2.unity
     guid: d245e8f21474b744d855d969226e6fe6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 7.unity
     guid: 2e2001241b01a894e9223610f24f6b6c
   - enabled: 0
@@ -191,13 +191,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 9.unity
     guid: 09004b06803f26b4dbbc24bfb37c7ee9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/New Levels/Level 8 Swing Dining Table 1.unity
     guid: b9450991a2a5ffe4cb507a99eb5645c6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift Multiple Shots Coins 1.unity
     guid: f3b95a0285ef0d84785b441f12c3fdfb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift zContinuity 1.unity
     guid: 8f8f214a3c19d1c48b1170f8d82a5f8d
   - enabled: 0
@@ -209,13 +209,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 10.unity
     guid: 20806ef9b882eba4392e2dd68d3c0bea
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift Multiple Shots Coins 2.unity
     guid: 1d5de0332f3635a479196693ab2ad4f6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift zContinuity 2.unity
     guid: 0c89195688f0b064787425086e9ea74f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle Level/Puzzle 6.unity
     guid: 6790ffb4f8905074ab71a046bc683197
   - enabled: 0
@@ -224,7 +224,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 11.unity
     guid: 9b2e24e289a692347b87bd3688295192
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift zContinuity 3.unity
     guid: ba7aaccd1a3ed1849aae69a7be6fe213
   - enabled: 0
@@ -233,7 +233,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Mobile Run/GameData/Scene/Level  - 13.unity
     guid: 3e5f2c978c85ceb4da0401f38829e5d6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Drift Levels/Drift zContinuity 4 Jump.unity
     guid: ab362a7a38ed5744592dfb05be6027f3
   - enabled: 0

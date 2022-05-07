@@ -102,6 +102,10 @@ public class PhoneMovementContinuity : MonoBehaviour
             splineFollower.spline = other.transform.parent.GetChild(0).GetComponent<SplineComputer>();
             splineFollower.followSpeed = 2.5f;
         }
+        if (other.gameObject.CompareTag("coin"))
+        {
+            other.GetComponent<CoinCollection>().CollectionEffect();
+        }
     }
 
     IEnumerator ActivateBallRigidbody(GameObject ball)

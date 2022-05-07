@@ -38,7 +38,6 @@ public class ISInterstitial : MonoBehaviour
     // Invoked when the interstitial ad closed and the user goes back to the application screen.
     public void InterstitialAdClosedEvent()
     {
-        ISManager.instance.timeGap = 30f;
         ISManager.instance.LoadInterstitialAds();
         ISManager.instance.ShowBannerAds();
     }

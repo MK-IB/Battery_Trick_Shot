@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         Vibration.Init();
         if(GA_FB.instance)
             GA_FB.instance.LevelStart(PlayerPrefs.GetInt("level", 1).ToString());
+        //CommonUIEventsManager.instance.StartLevelStartEvent();
     }
     public bool skipLvl;
     public void SkipLevel()
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("level", (PlayerPrefs.GetInt("level", 1) + 1));
         }
         PlayerPrefs.SetInt("levelnumber", PlayerPrefs.GetInt("levelnumber", 1) + 1);
-        ISManager.instance.ShowRewadedVideo();
+        //ISManager.instance.ShowRewadedVideo();
        
     }
 
@@ -64,14 +65,16 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         yield return new WaitForSeconds(waitTime);
-        UIManager.instance.winPanel.SetActive(true);
+        ISManager.instance.ShowInterstitialOnLC();
+        
+        //UIManager.instance.winPanel.SetActive(true);
+        CommonUIEventsManager.instance.StartLevelCompleteEvent();
         AudioManager.instance.PlayClip(AudioManager.instance.win);
         WinAndFailUIManager.instance.SetWinUI();
         
         if(GA_FB.instance)
             GA_FB.instance.LevelComplete(PlayerPrefs.GetInt("level", 1).ToString());
-        if(ISManager.instance)
-            ISManager.instance.ShowInterstitialOnLC();
+            
     }
 
     public IEnumerator LevelFailed(float waitTime)

@@ -55,6 +55,10 @@ public class MobileControllerRing : MonoBehaviour
             StartCoroutine(StopMovement());
             GameManager.instance.StartCoroutine(GameManager.instance.LevelFailed(1.5f));
         }
+        if (other.gameObject.CompareTag("coin"))
+        {
+            other.GetComponent<CoinCollection>().CollectionEffect();
+        }
     }
     IEnumerator StopMovement()
     {

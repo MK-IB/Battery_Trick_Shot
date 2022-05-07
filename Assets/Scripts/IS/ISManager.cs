@@ -87,7 +87,6 @@ public class ISManager : MonoBehaviour
     public bool TimeGapFinished()
     {
         timeGap -= Time.deltaTime;
-        timeTxt.text = timeGap.ToString("F1");
         if (timeGap <= 0)
         {
             return true;
@@ -127,26 +126,35 @@ public class ISManager : MonoBehaviour
     private int val = 0;
     public void ShowInterstitialOnLC()
     {
-        // val++;
-        // if(val < 2)
-        //     return;
-        //
-        // val = 0;
+         val++;
+         if(val < 2)
+             return;
+        
+         val = 0;
         ShowInterstitialAds();
         //Debug.Log("Ad called !");
     }
-
     public void ShowInterstitialAds()
     {
-        if (!canShowAds || !isInterstitialAdsAvaliable)
+        if (!canShowAds && !isInterstitialAdsAvaliable)
+            return;
+
+        PrintOut("CanShowAds @ ShowInterstitialAds");
+
+        HideBannerAds();
+        IronSource.Agent.showInterstitial();
+    }
+    public void ShowInterstitialAds2()
+    {
+        if (!canShowAds && !isInterstitialAdsAvaliable)
             return;
         IronSource.Agent.showInterstitial();
         HideBannerAds();
         PrintOut("CanShow + InterstitialAds");
         
-        /*if(!Application.isEditor)
+        if(!Application.isEditor)
             return;
-        FindObjectOfType<ISInterstitial>().InterstitialAdClosedEvent();*/
+        FindObjectOfType<ISInterstitial>().InterstitialAdClosedEvent();
     }
 
 

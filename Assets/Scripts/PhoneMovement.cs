@@ -80,6 +80,10 @@ public class PhoneMovement : MonoBehaviour
         {
             StartCoroutine(ActivateBallRigidbody(other.gameObject));
         }
+        if (other.gameObject.CompareTag("coin"))
+        {
+            other.GetComponent<CoinCollection>().CollectionEffect();
+        }
 
     }
 
