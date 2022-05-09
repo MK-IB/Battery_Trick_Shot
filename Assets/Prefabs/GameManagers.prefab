@@ -3370,6 +3370,8 @@ MonoBehaviour:
   charging: {fileID: 8300000, guid: 8dc5347dea887254cb02c0780689fee4, type: 3}
   confettiBlast: {fileID: 8300000, guid: 3c13f9b7457868d42a41769f30bbacd5, type: 3}
   coin: {fileID: 8300000, guid: 7c9d9a4558bcab444a3672e7f79d7418, type: 3}
+  coinRewared: {fileID: 8300000, guid: 3b517f48445b75d41b61e8beed21e69b, type: 3}
+  coinReleased: {fileID: 8300000, guid: 670045415fea1f348abd14987665057b, type: 3}
   malePainReactions:
   - {fileID: 8300000, guid: 8c31c4bccd839d7479e1d5a7625a2f0e, type: 3}
   - {fileID: 8300000, guid: a1dbdd4430ce7dd4985d2e94f751ae63, type: 3}

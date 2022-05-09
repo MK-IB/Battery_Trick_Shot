@@ -17,13 +17,18 @@ public class SkinUnlockManager : MonoBehaviour
     public GameObject getSkinWithAdButton;
     public GameObject getCoinsWithAdButton;
     public GameObject nextLevelButton;
-    public GameObject noThaksTextButton;
+    public GameObject noThanksTextButton;
     public GameObject multiplierScale;
+    public GameObject nextButtonOnUnlock;
 
     [Space(20)] public TextMeshProUGUI percSkinLoadedText;
     public RectTransform multiplierIndicator;
     public TextMeshProUGUI coinMultipliedText;
     public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI skinInformationText;
+    public GameObject coinCollectionParticle;
+    public GameObject skinUnlockedParticle;
+    
     private int _skinUnlockedIndex;
 
     private void Awake()
@@ -35,11 +40,25 @@ public class SkinUnlockManager : MonoBehaviour
     {
         StartCoroutine(UnlockSkin());
         coinsText.SetText(ShopDataHolder.instance.GetCoins().ToString());
+        skinInformationText.SetText("NEW SKIN ON ITS WAY !");
+        nextButtonOnUnlock.SetActive(false);
         multiplierIndicator.GetComponent<DOTweenAnimation>().tween.Restart();
-        getCoinsWithAdButton.SetActive(true);
-        nextLevelButton.SetActive(false);
-        noThaksTextButton.SetActive(true);
-        multiplierScale.SetActive(true);
+
+        if (ISManager.instance.isRewardedVideoAvaliable)
+        {
+            getCoinsWithAdButton.SetActive(true);
+            nextLevelButton.SetActive(false);
+            noThanksTextButton.SetActive(true);
+            multiplierScale.SetActive(true);
+        }
+        else
+        {
+            getCoinsWithAdButton.SetActive(false);
+            nextLevelButton.SetActive(true);
+            noThanksTextButton.SetActive(false);
+            multiplierScale.SetActive(false);
+        }
+        
     }
 
     private void Start()
@@ -94,28 +113,19 @@ public class SkinUnlockManager : MonoBehaviour
             percSkinLoadedText.gameObject.SetActive(false);
             ShopDataHolder.instance.SetSkinLockState(1);
             ShopDataHolder.instance.SetUnlockedSkin(ShopDataHolder.instance.GetUnlockedSkin() + _skinUnlockedIndex++);
-            //print("Skin index added = " + _skinUnlockedIndex);
         }
-
-        //print(" unlockde skin saved= " + ShopDataHolder.instance.GetUnlockedSkin());
     }
     
-    
+    //BOOL FOR REWARD
+    private bool _isUnlockedRewardPlayed, _getCoinRewardedPlayed;
     public void GetSkinWithAd()
     {
-        if (ISManager.instance)
-            ISManager.instance.ShowInterstitialAds();
+        ISManager.instance.ShowRewardedVideo();
+        _getCoinRewardedPlayed = false;
+        _isUnlockedRewardPlayed = true;
         ShopDataHolder.instance.SetSkinLockState(1);
         //ShopDataHolder.instance.SetUnlockedSkin(ShopDataHolder.instance.GetUnlockedSkin() + _skinUnlockedIndex++);
         
-    }
-
-    public void GetUnlockedSkin()
-    {
-        ISManager.instance.ShowInterstitialAds();
-        getSkinWithAdButton.SetActive(false);
-        percSkinLoadedText.gameObject.SetActive(true);
-        percSkinLoadedText.SetText("Congratulations ! Skin Added");
     }
 
     public void SaveSkinFillAmount()
@@ -148,24 +158,43 @@ public class SkinUnlockManager : MonoBehaviour
 
     public void PressMultipliedCoins()
     {
-        if (ISManager.instance)
-            ISManager.instance.ShowInterstitialAds();
         multiplierIndicator.GetComponent<DOTweenAnimation>().tween.Pause();
-        StartCoroutine(ChangeButtonToNextLevel());
+        _getCoinRewardedPlayed = true;
+        _isUnlockedRewardPlayed = false;
+        ISManager.instance.ShowRewardedVideo();
     }
 
+    public void DecideRewardCallback()
+    {
+        if (_isUnlockedRewardPlayed)
+        {
+            skinInformationText.SetText("CONGRATULATIONS !!! YOU GOT NEW SKIN !");
+            if(!nextLevelButton.activeSelf)
+                nextButtonOnUnlock.SetActive(true);
+            getSkinWithAdButton.SetActive(false);
+            skinUnlockedParticle.SetActive(true);
+        }else if (_getCoinRewardedPlayed)
+        {
+            StartCoroutine(ChangeButtonToNextLevel());
+        }
+    }
     IEnumerator ChangeButtonToNextLevel()
     {
-        yield return new WaitForSeconds(1);
         int totalCoins = _claimedCoins + ShopDataHolder.instance.GetCoins();
-        Debug.Log("claimed coins = " + _claimedCoins);
         coinsText.SetText(totalCoins.ToString());
         ShopDataHolder.instance.SetCoins(totalCoins);
 
         getCoinsWithAdButton.SetActive(false);
         nextLevelButton.SetActive(true);
-        noThaksTextButton.SetActive(false);
+        noThanksTextButton.SetActive(false);
         multiplierScale.SetActive(false);
-        Debug.Log("Coins added = " + totalCoins);
+
+        Vector3 movePos = nextLevelButton.transform.position;
+        RectTransform coinIconRect = UIManager.instance.coinIconRectTransform;
+        coinCollectionParticle.GetComponent<ParticleControlScript>().PlayControlledParticles(movePos, coinIconRect, false, false, false);
+        AudioManager.instance.PlayClip(AudioManager.instance.coinRewared);
+        yield return null;
+        /*yield return new WaitForSeconds(1);
+        AudioManager.instance.PlayClip(AudioManager.instance.coinReleased);*/
     }
 }

@@ -100,15 +100,12 @@ public class ISManager : MonoBehaviour
         return ConnectedToInternet() && TimeGapFinished();
     }
 
-    public void ShowRewadedVideo()
+    public void ShowRewardedVideo()
     {
         if (!canShowAds || !isRewardedVideoAvaliable)
             return;
-
-        
-
         HideBannerAds();
-        PrintOut("CanShowAds @ ShowRewadedVideo");
+        PrintOut("CanShowAds @ ShowRewardedVideo");
         IronSource.Agent.showRewardedVideo();
     }
 
@@ -185,35 +182,7 @@ public class ISManager : MonoBehaviour
 
     public void RewardCallBacks()
     {
-        if (PlayerPrefs.GetFloat("image", 0) >= 1)
-        {
-            // GameManager.instance.playerCharacters[PlayerPrefs.GetInt("Unlocking", 0)].SetActive(true);
-            PlayerPrefs.SetInt("Unlocking", PlayerPrefs.GetInt("Unlocking", 0) + 1);
-            PlayerPrefs.SetFloat("image", 0);
-        }
-
-        if(CanvasManager.instance && CanvasManager.instance.skipLvl)
-
-        {
-            CanvasManager.instance.skipLvl = false;
-            CanvasManager.instance.NextButtonPress();
-        }
-        
-        MainCanvasController mcc = FindObjectOfType<MainCanvasController>();
-        
-        if(mcc && mcc.skipLvl)
-
-        {
-            mcc.skipLvl = false;
-            mcc.NextLevel();
-        }
-        
-        if (GameManager.instance && GameManager.instance.skipLvl)
-        {
-            GameManager.instance.skipLvl = false;
-            GameManager.instance.NextLevel();
-        }
-        
+        SkinUnlockManager.instance.DecideRewardCallback();
     }
 
     public void PrintOut(string txt)

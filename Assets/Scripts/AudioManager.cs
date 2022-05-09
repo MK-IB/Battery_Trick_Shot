@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip charging;
     public AudioClip confettiBlast;
     public AudioClip coin;
+    public AudioClip coinRewared;
+    public AudioClip coinReleased;
     public List<AudioClip> malePainReactions;
     private void Awake()
     {

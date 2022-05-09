@@ -184,7 +184,7 @@ public class MainCanvasController : MonoBehaviour
 			return;
 
 		skipLvl = true;
-		ISManager.instance.ShowRewadedVideo();*/
+		ISManager.instance.ShowRewardedVideo();*/
 	}
 	private void OnGameEnd()
 	{

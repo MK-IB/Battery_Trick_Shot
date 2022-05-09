@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             return;
 
         skipLvl = true;
-        ISManager.instance.ShowRewadedVideo();*/
+        ISManager.instance.ShowRewardedVideo();*/
     }
     public void NextLevel()
     {
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("level", (PlayerPrefs.GetInt("level", 1) + 1));
         }
         PlayerPrefs.SetInt("levelnumber", PlayerPrefs.GetInt("levelnumber", 1) + 1);
-        //ISManager.instance.ShowRewadedVideo();
+        //ISManager.instance.ShowRewardedVideo();
        
     }
 
